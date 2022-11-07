@@ -2,33 +2,38 @@ package com.mediscreen.model;
 
 import java.util.Date;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
+
+@Document
 public class Note {
 	
-	private Integer id;
+	@Id
+	private String id;
 	private Date date;
 	private String content;
-	private Patient patient;
+	private int patient;
 	
 	public Note() {
 	}
 	
-	public Note(Integer id, Date date, String content, Patient patient) {
+	public Note(String id, Date date, String content, int patient) {
 		this.id = id;
 		this.date = date;
 		this.content = content;
 		this.patient = patient;
 	}
 	
-	public Note(Date date, String content, Patient patient) {
+	public Note(Date date, String content, int patient) {
 		this.date = date;
 		this.content = content;
 		this.patient = patient;
 	}
 	
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public Date getDate() {
@@ -43,10 +48,10 @@ public class Note {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Patient getPatient() {
+	public int getPatient() {
 		return patient;
 	}
-	public void setPatient(Patient patient) {
+	public void setPatient(int patient) {
 		this.patient = patient;
 	}
 	

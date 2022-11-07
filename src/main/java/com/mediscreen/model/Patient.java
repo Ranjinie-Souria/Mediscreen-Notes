@@ -32,8 +32,6 @@ public class Patient {
 		this.phone = phone;
 	}
 	
-	
-	
 	public Patient(String familyName, String firstName, Date birthdate, String gender, String address, String phone) {
 		this.familyName = familyName;
 		this.firstName = firstName;
