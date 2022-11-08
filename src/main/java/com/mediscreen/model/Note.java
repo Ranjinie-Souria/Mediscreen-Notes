@@ -12,20 +12,25 @@ public class Note {
 	private String id;
 	private Date date;
 	private String content;
-	private int patient;
+	private Integer patient;
 	
 	public Note() {
 	}
 	
-	public Note(String id, Date date, String content, int patient) {
+	public Note(String id, Date date, String content, Integer patient) {
 		this.id = id;
 		this.date = date;
 		this.content = content;
 		this.patient = patient;
 	}
 	
-	public Note(Date date, String content, int patient) {
+	public Note(Date date, String content, Integer patient) {
 		this.date = date;
+		this.content = content;
+		this.patient = patient;
+	}
+	
+	public Note(String content, Integer patient) {
 		this.content = content;
 		this.patient = patient;
 	}
@@ -48,10 +53,10 @@ public class Note {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getPatient() {
+	public Integer getPatient() {
 		return patient;
 	}
-	public void setPatient(int patient) {
+	public void setPatient(Integer patient) {
 		this.patient = patient;
 	}
 	
