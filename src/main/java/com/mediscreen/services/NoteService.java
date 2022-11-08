@@ -39,7 +39,7 @@ public class NoteService {
 		return noteRepository.findByPatient(id);
 	}
 	
-	public void createNote(Note note) {
+	public Note createNote(Note note) {
 		if(!note.getPatient().equals(null)) {
 			if(!note.getContent().equals(null)) {
 				if(note.getDate() == null) {
@@ -50,7 +50,11 @@ public class NoteService {
 				noteRepository.save(note);
 			}
 		}
-		
+		return note;
+	}
+
+	public void deleteNoteById(String id) {
+		noteRepository.deleteById(id);
 	}
 	
 

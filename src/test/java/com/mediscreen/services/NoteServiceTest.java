@@ -42,10 +42,11 @@ class NoteServiceTest {
 
 	@Test
 	void createNote_should_saveNote() {
-		
 		int noteRepositorySize = noteRepository.findAll().size();
 		noteService.createNote(new Note("Contenu",1));
 		Assertions.assertEquals(noteRepositorySize+1, noteRepository.findAll().size());
 	}
+	
+	
 
 }
