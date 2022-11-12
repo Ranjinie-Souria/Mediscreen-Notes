@@ -8,9 +8,7 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.ServerApi;
 import com.mongodb.ServerApiVersion;
-import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoDatabase;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.mediscreen")
@@ -24,8 +22,7 @@ public class NotesApplication {
 		            .version(ServerApiVersion.V1)
 		            .build())
 		        .build();
-		MongoClient mongoClient = MongoClients.create(settings);
-		MongoDatabase database = mongoClient.getDatabase("notes");
+		MongoClients.create(settings);
 		SpringApplication.run(NotesApplication.class, args);
 	}
 
