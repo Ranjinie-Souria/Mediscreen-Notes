@@ -1,6 +1,6 @@
 package com.mediscreen.services;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
@@ -36,15 +36,15 @@ public class NoteService {
 	}
 	
 	public List<Note> getNotesByPatient(int id) {
-		return noteRepository.findByPatient(id);
+		return noteRepository.findByPatientOrderByDateDesc(id);
 	}
 	
 	public Note createNote(Note note) {
 		if(note.getPatient() != null) {
 			if(note.getContent() != null) {
 				if(note.getDate() == null) {
-					LocalDate todayLocalDate = LocalDate.now(ZoneId.systemDefault());
-			    	java.sql.Date sqlDate = java.sql.Date.valueOf(todayLocalDate);
+					LocalDateTime todayLocalDate = LocalDateTime.now(ZoneId.systemDefault());
+					java.sql.Timestamp sqlDate = java.sql.Timestamp.valueOf(todayLocalDate);
 					note.setDate(sqlDate);
 				}
 				noteRepository.save(note);

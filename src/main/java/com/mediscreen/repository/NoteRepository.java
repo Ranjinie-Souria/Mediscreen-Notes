@@ -8,7 +8,7 @@ import com.mediscreen.model.Note;
 
 @Repository
 public interface NoteRepository extends MongoRepository<Note, String> {
-	
-	public List<Note> findByPatient(int id);
+
+	public List<Note> findByPatientOrderByDateDesc(int id);
 
 }
