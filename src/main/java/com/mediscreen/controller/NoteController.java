@@ -6,7 +6,6 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,17 +36,17 @@ public class NoteController {
     }
 	
 	@PostMapping("/notes")
-    public BodyBuilder createNote(@RequestBody Note note)
+    public  ResponseEntity<Note> createNote(@RequestBody Note note)
     {
 		Note noteAdded = noteService.createNote(note);
     	if (Objects.isNull(noteAdded)) {
-			return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT);
+			return ResponseEntity.noContent().build();
 		}
-		return ResponseEntity.status(HttpStatus.CREATED);
+		return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 	
 	@DeleteMapping (value = "/notes/{id}")
-    public void deletePatient(@PathVariable String id) {
+    public void deleteNote(@PathVariable String id) {
 	 noteService.deleteNoteById(id);
     }
 

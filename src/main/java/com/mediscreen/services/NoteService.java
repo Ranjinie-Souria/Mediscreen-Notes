@@ -40,8 +40,8 @@ public class NoteService {
 	}
 	
 	public Note createNote(Note note) {
-		if(!note.getPatient().equals(null)) {
-			if(!note.getContent().equals(null)) {
+		if(note.getPatient() != null) {
+			if(note.getContent() != null) {
 				if(note.getDate() == null) {
 					LocalDate todayLocalDate = LocalDate.now(ZoneId.systemDefault());
 			    	java.sql.Date sqlDate = java.sql.Date.valueOf(todayLocalDate);

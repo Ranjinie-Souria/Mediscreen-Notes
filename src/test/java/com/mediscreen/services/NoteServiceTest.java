@@ -9,10 +9,8 @@ import java.time.ZoneId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import com.mediscreen.model.Note;
@@ -20,7 +18,6 @@ import com.mediscreen.model.Patient;
 import com.mediscreen.repository.NoteRepository;
 
 @DataMongoTest
-@RunWith(MockitoJUnitRunner.class)
 class NoteServiceTest {
 	
 	@Autowired
@@ -47,6 +44,17 @@ class NoteServiceTest {
 		Assertions.assertEquals(noteRepositorySize+1, noteRepository.findAll().size());
 	}
 	
+	@Test
+	void deleteNote_should_deleteNote() {
+		int noteRepositorySize = noteRepository.findAll().size();
+		if(noteRepository.findAll().size()==0) {
+			noteService.createNote(new Note("Contenu",1));
+			noteRepositorySize = noteRepository.findAll().size();
+		}
+		String idNote = noteRepository.findAll().get(0).getId();
+		noteService.deleteNoteById(idNote);
+		Assertions.assertEquals(noteRepositorySize-1, noteRepository.findAll().size());
+	}
 	
 
 }
