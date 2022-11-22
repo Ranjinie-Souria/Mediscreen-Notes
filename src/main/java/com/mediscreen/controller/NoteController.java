@@ -45,7 +45,7 @@ public class NoteController {
 		return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 	
-	@DeleteMapping (value = "/notes/{id}")
+	@DeleteMapping (value = "/notes/delete/{id}")
     public void deleteNote(@PathVariable String id) {
 	 noteService.deleteNoteById(id);
     }
